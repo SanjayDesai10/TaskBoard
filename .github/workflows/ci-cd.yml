@@ -42,14 +42,14 @@ jobs:
           docker build -t ghcr.io/${{ env.IMAGE_OWNER }}/taskboard-backend:${{ github.sha }} ./session21-python/backend
           docker build -t ghcr.io/${{ env.IMAGE_OWNER }}/taskboard-frontend:${{ github.sha }} ./session21-python/frontend
       - name: Scan backend
-        uses: aquasecurity/trivy-action@v0.30.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: ghcr.io/${{ env.IMAGE_OWNER }}/taskboard-backend:${{ github.sha }}
           severity: HIGH,CRITICAL
           ignore-unfixed: true
           exit-code: '1'
       - name: Scan frontend
-        uses: aquasecurity/trivy-action@v0.30.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: ghcr.io/${{ env.IMAGE_OWNER }}/taskboard-frontend:${{ github.sha }}
           severity: HIGH,CRITICAL
